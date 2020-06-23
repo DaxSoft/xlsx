@@ -48,7 +48,7 @@ yarn add  @vorlefan/xlsx
 ## Usage
 
 ```ts
-import { XLSX } from '@vorlefan/xlsx'
+import * as XLSX  from '@vorlefan/xlsx'
 ```
 
 ## Documentation
