@@ -18,14 +18,7 @@
 
 ## History Behind
 
-I was working into a PaaS that requires to read a .xls|xlsx file and extract the data into a readable .json,
-in which will be sent for the database.
-Seeking around the web, I found the amazing 'mongo-xlsx', however, the data generated was a messy. So, I had
-the idea to create a package around the 'mongo-xlsx', in which I would use the other package 'string-similarity',
-to construct a better parse.
-In the end, it worked as I wanted and needed for the project.
-Then, I decide to construct a 'better one' from the one I have built to share with everyone.
-Please, if you can contribute with pull-requests, do it. I guess that this package can be pretty useful for everyone to use :)
+I was working into a PaaS that requires to read a .xls|xlsx file and extract the data into a readable .json, in which will be sent for the database. Seeking around the web, I found the amazing 'mongo-xlsx', however, the data generated was a messy. So, I had the idea to create a package around the 'mongo-xlsx', in which I would use the other package 'string-similarity', to construct a better parse. In the end, it worked as I wanted and needed for the project. Then, I had decide to construct a 'better one' from the one I have built to share with everyone. Please, if you can contribute with pull-requests, do it. I guess that this package can be pretty useful for everyone to use :)
 
 ## Packages
 
