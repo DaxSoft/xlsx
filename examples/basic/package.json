@@ -1,0 +1,12 @@
+{
+    "name": "xlsx",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {
+        "@vorlefan/xlsx": "^0.1.2"
+    },
+    "scripts": {
+        "start": "node src/index.js"
+    }
+}

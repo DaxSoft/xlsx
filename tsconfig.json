@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "ES2018",
+        "module": "CommonJS",
+        "lib": ["es6"],
+        "allowJs": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "removeComments": true,
+        "typeRoots": ["./node_modules/@types", "./src/@types"],
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "sourceMap": true,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "incremental": true,
+        "moduleResolution": "node",
+        "isolatedModules": true
+    },
+    "include": ["src/**/*"]
+}
