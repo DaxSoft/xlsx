@@ -1,23 +1,24 @@
 {
-    "env": {
-        "es2020": true,
-        "node": true,
-        "jest": true
-    },
-    "extends": ["standard"],
+    "env": { "es2020": true, "node": true, "jest": true },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 11,
-        "sourceType": "module"
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
     },
     "plugins": ["@typescript-eslint"],
-    "rules": {},
-    "space-before-function-paren": [
-        "error",
-        {
-            "anonymous": "ignore",
-            "named": "ignore",
-            "asyncArrow": "ignore"
-        }
-    ]
+    "rules": {
+        "semi": "off",
+        "no-console": "error",
+        "camelcase": "off",
+        "@typescript-eslint/camelcase": "off",
+        "@typescript-eslint/semi": ["off"],
+        "@typescript-eslint/ignoreRestArgs": true,
+        "@typescript-eslint/fixToUnknown": true
+    }
 }

@@ -1,4 +1,5 @@
-src
-test
-examples
-docs
+src/
+node_modules
+docs/
+examples/
+test/

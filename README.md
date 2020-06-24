@@ -2,6 +2,7 @@
 
 ![language](https://img.shields.io/badge/language-typescript-blue.svg)
 [![https://badgen.net/bundlephobia/minzip/@vorlefan/xlsx](https://badgen.net/bundlephobia/minzip/@vorlefan/xlsx)](https://bundlephobia.com/result?p=@vorlefan/xlsx)
+![version](https://img.shields.io/npm/v/@vorlefan/xlsx)
 
 > This is a experimental product. Only use it if you know what are you doing xD
 > ctrl+shift+v
@@ -48,7 +49,7 @@ yarn add  @vorlefan/xlsx
 ## Usage
 
 ```ts
-import * as XLSX  from '@vorlefan/xlsx'
+import * as XLSX from '@vorlefan/xlsx'
 ```
 
 ## Documentation
@@ -64,9 +65,12 @@ interface XLSX_CONVETOR {
     // @vorlefan/path
     routeName?: string // the route in which will save the output, * by default is main
     filename: string // the filename of the output
+    save?: boolean // by default is true, then it will save the file
+    callback?: Function | null // returns a function where the first paramater
+    // is the data generated
 }
 
-xlsxConvertor({filename, filepath, pathRoute  =  null, routeName  =  'main',} : XLSX_CONVETOR)
+xlsxConvertor({filename, filepath, pathRoute  =  null, routeName  =  'main', save = true, callback = null } : XLSX_CONVETOR)
 
 // Example: at the main folder
 

@@ -7,6 +7,7 @@
 import mongoXlsx from 'mongo-xlsx'
 import { PathRoute } from '@vorlefan/path'
 import { XLSXPath } from './path'
+import { promisify } from 'util'
 
 /*
 :--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ export interface XLSX_CONVETOR {
     pathRoute?: PathRoute | null
     routeName?: string
     filename: string
+    save?: boolean
+    callback?: Function | null
 }
 
 /*
@@ -35,6 +38,15 @@ export interface XLSX_CONVETOR {
  * you can define one by using @vorlefan/path
  * @param {String} routeName : the route in which will save the output,
  * by default is main
+ * @param {Boolean} save : by default is true, then it will save the file
+ * @param {Function} callback : returns a function where the first paramater
+ * is the data generated
+ * @example
+ * await xlsxConverter({
+ *       filename: 'example.json',
+ *       filepath: xls_file[0].filepath,
+ *       routeName: 'output',
+ * })
  */
 
 async function xlsxConvertor({
@@ -42,30 +54,36 @@ async function xlsxConvertor({
     filepath,
     pathRoute = null,
     routeName = 'main',
+    save = true,
+    callback = null,
 }: XLSX_CONVETOR): Promise<Boolean> {
-    const promisify_xlsx2MongoData = (...args) =>
-        new Promise(() => mongoXlsx.xlsx2MongoData(...args))
+    const xlsx2MongoData = promisify(mongoXlsx.xlsx2MongoData)
 
     const path_route: PathRoute = pathRoute || XLSXPath
     const final_filepath: string =
         typeof filepath === 'function' ? filepath({ path_route }) : filepath
 
     try {
-        let saved = false
-        await promisify_xlsx2MongoData(final_filepath, {}, async function (
+        let saved: boolean = false
+        let data: any = null
+        await xlsx2MongoData(final_filepath, {}, async function (
             err,
-            data
+            data_generated
         ) {
             if (!!err) {
                 return
             }
+            data = data_generated
+            if (!!callback && typeof callback === 'function') callback(data)
+            saved = true
+        })
+        if (!!data && !!save) {
             await path_route
                 .json()
                 .set(routeName)
                 .store({ filename, data, force: true })
-            saved = true
-        })
-        return !!saved
+        }
+        return saved
     } catch (error) {
         return false
     }

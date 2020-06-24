@@ -26,10 +26,10 @@ export interface GET_BY_KEY_OR_VALUE {
 */
 
 function get_by_key({ search, model }: GROUP_BY_VALUES): GET_BY_KEY_OR_VALUE {
-    const keys = []
+    const keys: Array<string> = []
 
-    model.map((row, index) => {
-        Object.keys(row).map((rkey, n) => {
+    model.map((row) => {
+        Object.keys(row).map((rkey) => {
             keys.push(String(rkey))
         })
     })
@@ -51,10 +51,10 @@ function get_by_key({ search, model }: GROUP_BY_VALUES): GET_BY_KEY_OR_VALUE {
 }
 
 function get_by_value({ search, model }: GROUP_BY_VALUES): GET_BY_KEY_OR_VALUE {
-    const values = []
+    const values: Array<string> = []
 
-    model.map((row, index) => {
-        Object.values(row).map((vln, n) => {
+    model.map((row) => {
+        Object.values(row).map((vln) => {
             values.push(String(vln))
         })
     })
