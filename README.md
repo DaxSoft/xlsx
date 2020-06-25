@@ -16,6 +16,7 @@
 -   [Documentation](#docs)
 -   [Disclaimer](#disclaimer)
 -   [Example](#example)
+-   [Media](#media)
 
 ## History Behind
 
@@ -64,24 +65,22 @@ interface XLSX_CONVETOR {
     pathRoute?: PathRoute | null // If it is null, it will use the default, you can define one by using
     // @vorlefan/path
     routeName?: string // the route in which will save the output, * by default is main
-    filename: string // the filename of the output
-    save?: boolean // by default is true, then it will save the file
     callback?: Function | null // returns a function where the first paramater
-    // is the data generated
+    // is the data generated, and the second is the error
 }
 
-xlsxConvertor({filename, filepath, pathRoute  =  null, routeName  =  'main', save = true, callback = null } : XLSX_CONVETOR)
+xlsxConvertor({filepath, pathRoute  =  null, routeName  =  'main', callback = null } : XLSX_CONVETOR)
 
 // Example: at the main folder
 
-xlsxConvertor({ filepath: './example.xls', filename: './example.json' }).then(console.log).catch(console.error)
+xlsxConvertor({ filepath: './example.xls', }).then(console.log).catch(console.error)
 
 // Or, if there is a 'example' folder at the 'main' folder
 
 xlsxConvertor({ filepath: ({path_route}) => {
     path_route.join('example', 'main')
     return path_route.plug('example', 'example.xlsx')
-}, filename: './example2.json', routeName: 'example' })
+}, routeName: 'example' })
 
 ```
 
@@ -149,3 +148,18 @@ While it is true that it can be used in production, there are as well, several f
 ## Example
 
 By the sake of helping xD, take a look at the folder 'example' of this repository. May it help you, in case of using on production
+
+## Media
+
+_This media is from the example/intermediate_
+
+## Media
+
+**From this Excel**:
+![](examples/intermediate/excel_aapl.png)
+
+**To this .json file**:
+![](examples/intermediate/json_aapl.png)
+
+**Then we gonna split, taking only the data from CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited)**:
+![](examples/intermediate/split_json_aapl.png)

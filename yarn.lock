@@ -653,10 +653,10 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@vorlefan/path@^1.5.7":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/@vorlefan/path/-/path-1.5.7.tgz#b90b3e3faa21f2f76d531572043821f08d573fc5"
-  integrity sha512-kdTKHSRLeZhjEgkc3u21ceDeI6f+z9gfczG98IpnHB7NpkqcSl4Ins8HIM3xD9fWZF/F21GO44fs0Mk1NtZV2g==
+"@vorlefan/path@^1.5.8":
+  version "1.5.8"
+  resolved "https://registry.yarnpkg.com/@vorlefan/path/-/path-1.5.8.tgz#a997922844d179543f83a239c1d37d969fc4dbb5"
+  integrity sha512-KLNwg4FXET7bjAZbjNtCLokKHZTnAkJnCpVgbkl6SmvKviUYo91VPA8bBwljeq0pHhUg3WEt44iqUtbpQP9V2w==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"

@@ -1,6 +1,6 @@
 {
     "name": "@vorlefan/xlsx",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "convert xlsx file into beautiful json file",
     "main": "dist/index.js",
     "author": {
@@ -20,7 +20,7 @@
         "size": "bundlesize"
     },
     "dependencies": {
-        "@vorlefan/path": "^1.5.7",
+        "@vorlefan/path": "^1.5.8",
         "camelcase": "^6.0.0",
         "mongo-xlsx": "^1.0.12",
         "string-similarity": "^4.0.1"

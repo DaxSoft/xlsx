@@ -7,7 +7,6 @@
 import mongoXlsx from 'mongo-xlsx'
 import { PathRoute } from '@vorlefan/path'
 import { XLSXPath } from './path'
-import { promisify } from 'util'
 
 /*
 :--------------------------------------------------------------------------
@@ -18,9 +17,7 @@ import { promisify } from 'util'
 export interface XLSX_CONVETOR {
     filepath: string | Function
     pathRoute?: PathRoute | null
-    routeName?: string
     filename: string
-    save?: boolean
     callback?: Function | null
 }
 
@@ -50,15 +47,10 @@ export interface XLSX_CONVETOR {
  */
 
 async function xlsxConvertor({
-    filename,
     filepath,
     pathRoute = null,
-    routeName = 'main',
-    save = true,
     callback = null,
 }: XLSX_CONVETOR): Promise<Boolean> {
-    const xlsx2MongoData = promisify(mongoXlsx.xlsx2MongoData)
-
     const path_route: PathRoute = pathRoute || XLSXPath
     const final_filepath: string =
         typeof filepath === 'function' ? filepath({ path_route }) : filepath
@@ -66,23 +58,20 @@ async function xlsxConvertor({
     try {
         let saved: boolean = false
         let data: any = null
-        await xlsx2MongoData(final_filepath, {}, async function (
+        mongoXlsx.xlsx2MongoData(final_filepath, {}, function (
             err,
             data_generated
         ) {
             if (!!err) {
+                if (!!callback && typeof callback === 'function')
+                    callback(data, err)
                 return
             }
             data = data_generated
-            if (!!callback && typeof callback === 'function') callback(data)
+            if (!!callback && typeof callback === 'function')
+                callback(data, err)
             saved = true
         })
-        if (!!data && !!save) {
-            await path_route
-                .json()
-                .set(routeName)
-                .store({ filename, data, force: true })
-        }
         return saved
     } catch (error) {
         return false
